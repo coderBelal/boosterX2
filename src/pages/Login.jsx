@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { FaUser, FaLock, FaEye } from "react-icons/fa";
+import { FaUser, FaLock, FaEye,FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
+  const toggleConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -72,13 +74,17 @@ export default function Login() {
                   className="pl-10 pr-10 w-full py-3 px-4 bg-gray-50 border border-gray-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition"
                   placeholder="Enter your password"
                 />
-                <button
-                  type="button"
-                  onClick={togglePassword}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                >
-                  <FaEye className="text-gray-400 hover:text-indigo-500" />
-                </button>
+                          <button
+  type="button"
+  onClick={toggleConfirmPassword}
+  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+>
+  {showConfirmPassword ? (
+    <FaEyeSlash size={20} className="text-gray-400 hover:text-indigo-500" />
+  ) : (
+    <FaEye size={20} className="text-gray-400 hover:text-indigo-500" />
+  )}
+</button>
               </div>
               {passwordError && (
                 <p className="text-red-500 text-sm mt-1">Password is required</p>
@@ -106,9 +112,13 @@ export default function Login() {
             >
               Sign In
             </button>
+            <div>
+                <h1 className=" text-center"> hav'nt account?  <Link to="/signup" className="   text-red-500"> Create here</Link>  </h1>
+            </div>
           </form>
         </div>
       </div>
+    
     </div>
   );
 }

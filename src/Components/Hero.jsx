@@ -7,7 +7,9 @@ import {
   FaCrown,
   FaUsers,
   FaGlobe,
+  FaEyeSlash,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,6 +32,9 @@ const Hero = () => {
       alert("Logged in successfully!");
     }
   };
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+ 
+  const toggleConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
 
   return (
     <div className="font-sans bg-gradient-to-br from-indigo-100 via-white to-pink-100 min-h-screen flex flex-col">
@@ -125,13 +130,17 @@ const Hero = () => {
                     className="pl-10 pr-10 w-full py-3 px-4 bg-gray-50 border border-gray-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition"
                     placeholder="Enter your password"
                   />
-                  <button
-                    type="button"
-                    onClick={togglePassword}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                  >
-                    <FaEye className="text-gray-400 hover:text-indigo-500" />
-                  </button>
+                                          <button
+                  type="button"
+                  onClick={toggleConfirmPassword}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                >
+                  {showConfirmPassword ? (
+                    <FaEyeSlash size={20} className="text-gray-400 hover:text-indigo-500" />
+                  ) : (
+                    <FaEye size={20} className="text-gray-400 hover:text-indigo-500" />
+                  )}
+                </button>
                 </div>
                 {passwordError && (
                   <p className="text-red-500 text-sm mt-1">Password is required</p>
@@ -159,10 +168,14 @@ const Hero = () => {
               >
                 Sign In
               </button>
+              <div>
+                <h1 className=" text-center"> hav'nt account?  <Link to="/signup" className="   text-red-500"> Create here</Link>  </h1>
+            </div>
             </form>
           </div>
         </div>
       </div>
+     
     </div>
   );
 };

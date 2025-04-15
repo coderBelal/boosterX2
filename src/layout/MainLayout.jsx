@@ -1,5 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
+import ContactButtons from "../Components/ContactButtons";
 
 export default function MainLayout() {
   return (
@@ -8,6 +10,8 @@ export default function MainLayout() {
       <div  >
         <Outlet />
       </div>
+      <ContactButtons/>
+      <Footer/>
     </div>
   );
 }

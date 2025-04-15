@@ -154,8 +154,8 @@ const Services  = () => {
   });
   
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-100 to-indigo-200 p-4 mt-10">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-pink-100  p-4     mt-20 ">
+      <div className="max-w-7xl mx-auto min-h-screen">
         {/* Header */}
         <div className="text-center py-8">
           <h1 className="text-5xl font-bold text-gray-900 mb-2">The Services We Offer</h1>
